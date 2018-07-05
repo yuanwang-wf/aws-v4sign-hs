@@ -2,16 +2,16 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 57c2b4ffec27437704a6e3d5d8e00ea0c57ddfeee799ba7242f3a0538258b198
+-- hash: 3c6787040a76d1705ad3cc9ccc8ffb14834ba1b2dfe8e406b85e6d825f926643
 
 name:           aws-v4sign-hs
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/aws-v4sign-hs#readme>
 homepage:       https://github.com/githubuser/aws-v4sign-hs#readme
 bug-reports:    https://github.com/githubuser/aws-v4sign-hs/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2018 Author name here
+author:         Yuan Wang
+maintainer:     yuan.wang@workiva.com
+copyright:      2018 Yuan Wang
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -32,7 +32,18 @@ library
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , base16-bytestring
+    , byteable
+    , bytestring
+    , case-insensitive
+    , cryptohash
+    , http-client
+    , http-conduit
+    , http-types
+    , text
+    , time
   default-language: Haskell2010
 
 executable aws-v4sign-hs-exe
@@ -43,8 +54,19 @@ executable aws-v4sign-hs-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aws-v4sign-hs
+      aeson
+    , aws-v4sign-hs
     , base >=4.7 && <5
+    , base16-bytestring
+    , byteable
+    , bytestring
+    , case-insensitive
+    , cryptohash
+    , http-client
+    , http-conduit
+    , http-types
+    , text
+    , time
   default-language: Haskell2010
 
 test-suite aws-v4sign-hs-test
@@ -56,6 +78,17 @@ test-suite aws-v4sign-hs-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aws-v4sign-hs
+      aeson
+    , aws-v4sign-hs
     , base >=4.7 && <5
+    , base16-bytestring
+    , byteable
+    , bytestring
+    , case-insensitive
+    , cryptohash
+    , http-client
+    , http-conduit
+    , http-types
+    , text
+    , time
   default-language: Haskell2010

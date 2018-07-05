@@ -20,7 +20,18 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/aws-v4sign-hs#readme>
 
 dependencies:
+- aeson
 - base >= 4.7 && < 5
+- base16-bytestring
+- byteable
+- bytestring
+- case-insensitive
+- cryptohash
+- http-client
+- http-conduit
+- http-types
+- text
+- time
 
 library:
   source-dirs: src
