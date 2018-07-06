@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3c6787040a76d1705ad3cc9ccc8ffb14834ba1b2dfe8e406b85e6d825f926643
+-- hash: 0848be2245d75b249d8a5b4cf9913c5fe7f40b3060deb4437abb6a3d8d18a700
 
 name:           aws-v4sign-hs
 version:        0.1.0.0
@@ -86,9 +86,12 @@ test-suite aws-v4sign-hs-test
     , bytestring
     , case-insensitive
     , cryptohash
+    , data-default
     , http-client
     , http-conduit
     , http-types
+    , tasty
+    , tasty-hunit
     , text
     , time
   default-language: Haskell2010
