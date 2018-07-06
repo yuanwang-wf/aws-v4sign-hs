@@ -26,7 +26,7 @@ dependencies:
 - byteable
 - bytestring
 - case-insensitive
-- cryptohash
+- cryptonite
 - http-client
 - http-conduit
 - http-types

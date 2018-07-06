@@ -1,13 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Default
 
-import           Test.Tasty
-import Test.Tasty.HUnit (testCase, (@?=))
+import           Data.ByteString           (ByteString)
+import           Data.Maybe
+import           Lib
 import           Network.HTTP.Client
+import           Network.HTTP.Simple
 import           Network.HTTP.Types
 import           Network.HTTP.Types.Header
 import           Network.HTTP.Types.Method
-import           Data.Maybe
+import           Test.Tasty
+import           Test.Tasty.HUnit          (testCase, (@?=))
 
 
 main :: IO ()
@@ -17,16 +19,28 @@ tests :: TestTree
 tests = testGroup "Tests" [canonicalRequestTest]
 
 
-targetRequest :: Maybe Request
-targetRequest = do
+targetRequestM :: Maybe Request
+targetRequestM = do
     initReq <- parseUrlThrow "https://example.amazonaws.com"
-    let req = initReq
+    let req = setRequestQueryString [("Param2", Just "value2"), ("Param1", Just "value1")] initReq
                 { requestHeaders =
-                    [ ("Accept", "text/json")
-                    , ("Content-Type", "application/x-www-form-urlencoded")
-                    , ("X-Amz-Date", "20150830T123600Z")]
+                    [ ("X-Amz-Date", "20150830T123600Z")]
                 }
     return req
+
+targetRequest :: Request
+targetRequest = fromJust targetRequestM
+
+
+expected :: ByteString
+expected = "GET\
+\/\
+\Param1=value1&Param2=value2\
+\host:example.amazonaws.com\
+\x-amz-date:20150830T123600Z\
+\\
+\host;x-amz-date\
+\e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 -- GET /?Param2=value2&Param1=value1 HTTP/1.1
 -- Host:example.amazonaws.com
@@ -35,5 +49,6 @@ canonicalRequestTest :: TestTree
 canonicalRequestTest =
     testGroup "Canonical request test" [
         testCase "simple" $
-            isJust targetRequest @?= True
+        canonicalRequest targetRequest "" @?= expected
+
     ]

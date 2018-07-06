@@ -4,9 +4,8 @@ module Main where
 
 
 import           Control.Monad             (mzero)
-import           Crypto.Hash               (Digest, SHA256,
-                                            digestToHexByteString, hash, hmac,
-                                            hmacGetDigest)
+import           Crypto.Hash               (Digest, SHA256, hash)
+import           Crypto.MAC.HMAC           (hmac, hmacGetDigest)
 import           Data.Aeson
 import           Data.Byteable             (toBytes)
 import           Data.ByteString           (ByteString)
@@ -51,7 +50,7 @@ bsToLower :: ByteString -> ByteString
 bsToLower = C.map toLower
 
 hexHash :: ByteString -> ByteString
-hexHash p = digestToHexByteString (hash p :: Digest SHA256)
+hexHash p = (C.pack . show) (hash p :: Digest SHA256)
 
 signedHeaders :: Request -> ByteString
 signedHeaders req =
@@ -70,7 +69,7 @@ v4DerivedKey secretAccessKey date region service = hmacSHA256 kService "aws4_req
           kService = hmacSHA256 kRegion service
 
 hmacSHA256 :: ByteString -> ByteString -> ByteString
-hmacSHA256 key p = toBytes $ (hmacGetDigest $ hmac key p :: Digest SHA256)
+hmacSHA256 key p = (C.pack . show) (hmacGetDigest $ hmac key p :: Digest SHA256)
 
 stringToSign :: UTCTime    -> -- ^ current time
                 ByteString -> -- ^ The AWS region
