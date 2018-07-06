@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0848be2245d75b249d8a5b4cf9913c5fe7f40b3060deb4437abb6a3d8d18a700
+-- hash: 79917fc693db7e5867fbf9c4d752f09b4ead9ec7810cc2024f6adefa519a08df
 
 name:           aws-v4sign-hs
 version:        0.1.0.0
@@ -38,7 +38,7 @@ library
     , byteable
     , bytestring
     , case-insensitive
-    , cryptohash
+    , cryptonite
     , http-client
     , http-conduit
     , http-types
@@ -61,7 +61,7 @@ executable aws-v4sign-hs-exe
     , byteable
     , bytestring
     , case-insensitive
-    , cryptohash
+    , cryptonite
     , http-client
     , http-conduit
     , http-types
@@ -85,7 +85,7 @@ test-suite aws-v4sign-hs-test
     , byteable
     , bytestring
     , case-insensitive
-    , cryptohash
+    , cryptonite
     , data-default
     , http-client
     , http-conduit
