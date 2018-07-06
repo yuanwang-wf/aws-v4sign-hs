@@ -49,8 +49,10 @@ canonicalRequest req body = C.concat $
 
 bsToLower :: ByteString -> ByteString
 bsToLower = C.map toLower
+
 hexHash :: ByteString -> ByteString
 hexHash p = digestToHexByteString (hash p :: Digest SHA256)
+
 signedHeaders :: Request -> ByteString
 signedHeaders req =
         C.concat . intersperse ";"  $ map (\(hn,_) -> bsToLower (original hn)) hs
