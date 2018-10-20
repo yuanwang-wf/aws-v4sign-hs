@@ -34,6 +34,8 @@ isChunckRequestBody _                        = True
 isChunckRequest :: Request -> Bool
 isChunckRequest = isChunckRequestBody . requestBody
 
+
+
 canonicalQueryString :: Request -> ByteString
 canonicalQueryString = renderQuery False . sortOn fst . parseQuery . queryString
 
