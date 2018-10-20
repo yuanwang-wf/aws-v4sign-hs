@@ -3,7 +3,7 @@ version:             0.1.0.0
 github:              "githubuser/aws-v4sign-hs"
 license:             BSD3
 author:              "Yuan Wang"
-maintainer:          "yuan.wang@workiva.com"
+maintainer:          "github@yuanw.biz"
 copyright:           "2018 Yuan Wang"
 
 extra-source-files:
@@ -17,7 +17,10 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/aws-v4sign-hs#readme>
+description:         Please see the README on GitHub at <https://github.com/yuanw/aws-v4sign-hs#readme>
+
+data-files:
+  - data/*.*
 
 dependencies:
 - aeson
@@ -58,5 +61,4 @@ tests:
     dependencies:
     - aws-v4sign-hs
     - data-default
-    - tasty
-    - tasty-hunit
+    - hspec
