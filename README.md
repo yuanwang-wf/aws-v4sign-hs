@@ -16,5 +16,5 @@ wire managerModifyRequest field in [ManagerSettings](http://hackage.haskell.org/
 
 ## References
 
-https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
-https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html
+1 https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
+2 https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html
