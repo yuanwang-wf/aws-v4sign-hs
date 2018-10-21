@@ -22,7 +22,7 @@ headers :: Request -> [Header]
 headers req = sortBy (\(a,_) (b,_) -> compare a b) (("host", host req) : requestHeaders req)
 
 canonicalHeaders :: Request -> ByteString
-canonicalHeaders req = C.concat $ map (\(hn,hv) -> bsToLower (original hn) <> ":" <> hv <> "n") hs
+canonicalHeaders req = C.concat $ map (\(hn,hv) -> bsToLower (original hn) <> ":" <> hv <> "\n") hs
     where hs = headers req
 
 isChunckRequestBody :: RequestBody -> Bool
@@ -33,8 +33,6 @@ isChunckRequestBody _                        = True
 
 isChunckRequest :: Request -> Bool
 isChunckRequest = isChunckRequestBody . requestBody
-
-
 
 canonicalQueryString :: Request -> ByteString
 canonicalQueryString = renderQuery False . sortOn fst . parseQuery . queryString

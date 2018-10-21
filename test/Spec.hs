@@ -26,9 +26,7 @@ targetRequest = fromJust targetRequestM
 
 main :: IO ()
 main = hspec $ do
-  describe "Prelude.head" $ do
-    it "returns the first element of a list" $ do
-      head [23 ..] `shouldBe` (23 :: Int)
-
-    it "read content" $ do
-        (BS.readFile "data/example.txt") `shouldReturn`  (canonicalRequest targetRequest "")
+  describe "canonicalRequest" $ do
+    it "task 1" $ do
+        expectedContent <- BS.readFile "data/example.txt"
+        (canonicalRequest targetRequest "") `shouldBe` expectedContent
