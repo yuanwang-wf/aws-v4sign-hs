@@ -30,3 +30,6 @@ main = hspec $ do
     it "task 1" $ do
         expectedContent <- BS.readFile "data/example.txt"
         (canonicalRequest targetRequest "") `shouldBe` expectedContent
+
+    it "hashed canonical request" $ do
+      hexHash (canonicalRequest targetRequest "") `shouldBe` "f536975d06c0309214f805bb90ccff089219ecd68b2577efef23edd43b7e1a59"
