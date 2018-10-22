@@ -24,11 +24,18 @@ targetRequestM = do
 targetRequest :: Request
 targetRequest = fromJust targetRequestM
 
+--TODO: check whether ByteString endwith \n
+readTestFile :: FilePath -> IO BS.ByteString
+readTestFile path = do
+  content <- BS.readFile path
+  return $ BS.take ((BS.length content) -1) content
+
+
 main :: IO ()
 main = hspec $ do
   describe "canonicalRequest" $ do
     it "task 1" $ do
-        expectedContent <- BS.readFile "data/example.txt"
+        expectedContent <- readTestFile "data/example.txt"
         (canonicalRequest targetRequest "") `shouldBe` expectedContent
 
     it "hashed canonical request" $ do
