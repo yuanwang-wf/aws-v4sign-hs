@@ -1,24 +1,27 @@
--- This file has been generated from package.yaml by hpack version 0.28.2.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 79917fc693db7e5867fbf9c4d752f09b4ead9ec7810cc2024f6adefa519a08df
+-- hash: 678e04cd387ea3c79038dd119a227b45412b2f64e14394c885dbc5cf552b7032
 
 name:           aws-v4sign-hs
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/aws-v4sign-hs#readme>
+description:    Please see the README on GitHub at <https://github.com/yuanw/aws-v4sign-hs#readme>
 homepage:       https://github.com/githubuser/aws-v4sign-hs#readme
 bug-reports:    https://github.com/githubuser/aws-v4sign-hs/issues
 author:         Yuan Wang
-maintainer:     yuan.wang@workiva.com
+maintainer:     github@yuanw.biz
 copyright:      2018 Yuan Wang
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
-cabal-version:  >= 1.10
 extra-source-files:
-    ChangeLog.md
     README.md
+    ChangeLog.md
+data-files:
+    data/example.txt
 
 source-repository head
   type: git
@@ -87,11 +90,10 @@ test-suite aws-v4sign-hs-test
     , case-insensitive
     , cryptonite
     , data-default
+    , hspec
     , http-client
     , http-conduit
     , http-types
-    , tasty
-    , tasty-hunit
     , text
     , time
   default-language: Haskell2010
